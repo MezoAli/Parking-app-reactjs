@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import CarData from "./components/CarData";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Garage from "./components/Garage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [vehicleList, setVehicleList] = useState([]);
+	return (
+		<div>
+			{console.log(vehicleList)}
+			<h1 className="text-primary text-center">Parking app</h1>
+			<Routes>
+				<Route path="/" element={<CarData setVehicleList={setVehicleList} />} />
+				<Route path="/garage" element={<Garage vehicleList={vehicleList} />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
