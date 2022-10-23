@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CarData({ setVehicleList }) {
 	const [vehicleNumber, setVehicleNumber] = useState("");
 	const [driverName, setDriverName] = useState("");
-
+	const navigate = useNavigate();
 	const submitHandler = (e) => {
 		e.preventDefault();
 		const today = new Date();
@@ -17,6 +17,7 @@ function CarData({ setVehicleList }) {
 		});
 		setDriverName("");
 		setVehicleNumber("");
+		navigate("/garage");
 	};
 	return (
 		<>
